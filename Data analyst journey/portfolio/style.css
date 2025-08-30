@@ -1,0 +1,159 @@
+/* General */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  background: #000;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 1000;
+}
+.navbar .logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+.navbar .logo span {
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+}
+.navbar nav a {
+  margin: 0 12px;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.navbar nav a:hover {
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+}
+.navbar nav a.active {
+  color: #fff;
+  text-shadow: 0 0 14px #0ff;
+  transform: translateY(-2px);
+}
+
+/* Sections - full screen */
+.section {
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+.section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Background neon colors per section */
+.hero {
+  background: radial-gradient(circle at center, #0ff3, #000 80%);
+}
+.about {
+  background: radial-gradient(circle at top, #ff00ff33, #000 85%);
+}
+.projects {
+  background: radial-gradient(circle at center, #00ffff33, #000 80%);
+}
+.skills {
+  background: radial-gradient(circle at center, #ffff0033, #000 85%);
+}
+.experience {
+  background: radial-gradient(circle at center, #ff660033, #000 80%);
+}
+.certifications {
+  background: radial-gradient(circle at center, #33ff9933, #000 80%);
+}
+.contact {
+  background: radial-gradient(circle at center, #3399ff33, #000 85%);
+}
+
+/* Hero */
+.hero .profile-pic {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 4px solid #0ff;
+  box-shadow: 0 0 20px #0ff;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+.hero h1 {
+  font-size: 28px;
+}
+.neon {
+  color: #0ff;
+  text-shadow: 0 0 12px #0ff, 0 0 24px #0ff;
+}
+
+/* Section titles */
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #f0f;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  max-width: 600px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #0ff;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  padding: 6px 0;
+  font-size: 16px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Neon cursor glow */
+#neon-glow {
+  position: fixed;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  z-index: 9999;
+  transition: transform 0.06s linear;
+  box-shadow: 0 0 18px rgba(0,255,255,0.9), 0 0 40px rgba(255,62,198,0.25);
+  opacity: 0.9;
+}

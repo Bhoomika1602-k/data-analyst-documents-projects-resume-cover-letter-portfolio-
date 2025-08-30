@@ -1,0 +1,6 @@
+Count of CustomerID,Churn,,,,Count of CustomerID,Churn,,,,,Count of CustomerID,Churn,,
+ContractType,No,Yes,Grand Total,,Gender,No,Yes,Grand Total,,,Age Group,No,Yes,Grand Total
+Monthly,,9,9,,Female,6,4,10,,,Middle-aged,8,4,12
+Yearly,11,,11,,Male,5,5,10,,,Senior,2,1,3
+Grand Total,11,9,20,,Grand Total,11,9,20,,,Young,1,4,5
+,,,,,,,,,,,Grand Total,11,9,20

@@ -1,0 +1,22 @@
+CustomerID,Gender,Age,ContractType,MonthlyCharges,InternetService,Churn,Age Group,,Churn Rate,,Gender,Churn Rate,,ContractType,Churn Rate
+C001,Female,25,Monthly,?30,DSL,Yes,Young,,45.00%,,Male,50%,,Monthly,100.0%
+C002,Male,42,Yearly,?55,Fiber,No,Middle-aged,,40.00%,,Female,40%,,Yearly,0.0%
+C003,Male,36,Monthly,?70,Fiber,Yes,Middle-aged,,42.11%,,,,,,
+C004,Female,29,Yearly,?45,DSL,No,Young,,38.89%,,,,,,
+C005,Male,51,Monthly,?65,Fiber,Yes,Senior,,41.18%,,,,,,
+C006,Female,33,Yearly,?40,DSL,No,Middle-aged,,37.50%,,,,,,
+C007,Male,47,Yearly,?80,Fiber,No,Middle-aged,,40.00%,,,,,,
+C008,Female,22,Monthly,?25,DSL,Yes,Young,,42.86%,,,,,,
+C009,Male,39,Yearly,?50,Fiber,No,Middle-aged,,38.46%,,,,,,
+C010,Female,28,Monthly,?60,Fiber,Yes,Young,,41.67%,,,,,,
+C011,Male,41,Yearly,?75,DSL,No,Middle-aged,,36.36%,,,,,,
+C012,Female,34,Monthly,?35,Fiber,Yes,Middle-aged,,40.00%,,,,,,
+C013,Male,55,Yearly,?90,Fiber,No,Senior,,33.33%,,,,,,
+C014,Female,45,Yearly,?40,DSL,No,Middle-aged,,37.50%,,,,,,
+C015,Male,30,Monthly,?50,DSL,Yes,Middle-aged,,42.86%,,,,,,
+C016,Female,52,Yearly,?85,Fiber,No,Senior,,33.33%,,,,,,
+C017,Male,27,Monthly,?38,Fiber,Yes,Young,,40.00%,,,,,,
+C018,Female,49,Yearly,?55,DSL,No,Middle-aged,,25.00%,,,,,,
+C019,Male,31,Monthly,?45,Fiber,Yes,Middle-aged,,33.33%,,,,,,
+C020,Female,40,Yearly,?60,DSL,No,Middle-aged,,0.00%,,,,,,
+20,<total customer,,,,total yes>,9,,,,,,,,,

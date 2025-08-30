@@ -1,0 +1,13 @@
+Date,Category,Description, Amount ,Type,Category-wise expense,,,,,, Total Income Amount,,,Net Savings,,Total Expense amount
+1/8/2025,Salary,Monthly Salary," ? 25,000 ",Income,0,,Spending Limit,,1000,,,30000,,24150,,5850
+2/8/2025,Food,Lunch with friends, ? 500 ,Expense,2000,,,,,,,,,,,
+3/8/2025,Travel,Metro recharge, ? 300 ,Expense,550,,,,,,,,,,,
+4/8/2025,Shopping,T-shirt purchase, ? 800 ,Expense,800,,,,,,,,,,,
+5/8/2025,Bills,Electricity Bill," ? 1,200 ",Expense,1200,,,,,,,,,,,
+6/8/2025,Food,Groceries," ? 1,500 ",Expense,2000,,,,,,,,,,,
+7/8/2025,Income,Freelance Project," ? 5,000 ",Income,0,,,,,,,,,,,
+8/8/2025,Travel,Cab ride, ? 250 ,Expense,250,,,,,,,,,,,
+9/8/2025,Health,Medicines, ? 600 ,Expense,600,,,,,,,,,,,
+10/8/2025,Entertainment,Movie tickets, ? 700 ,Expense,700,,,,,,,,,,,
+,,total,"35,850",2,Income,,,,,,,,,,,
+,,,,8,Expense,,,,,,,,,,,

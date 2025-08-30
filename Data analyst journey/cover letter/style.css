@@ -1,0 +1,124 @@
+/* Base reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+/* Global */
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  background: #000;           
+  color: #111;
+  overflow: hidden;            
+}
+
+
+.bg-layer canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;                 
+}
+#bubbleCanvas { z-index: -1; } 
+
+
+.sheet {
+  position: relative;
+  width: 260mm;
+  min-height: 290mm;
+  margin: 24px auto;
+  padding: 0;                  
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.65);
+  overflow: hidden;
+}
+
+
+.sheet-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(1200px 500px at 80% 0%, rgba(232, 215, 29, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, rgba(14,165,233,0.1), transparent 60%),
+    linear-gradient(180deg, #37c0ea 0%, #a7bfef 40%, #c4b0e8 100%);
+  pointer-events: none;
+}
+
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px 28px 10px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25), 0 0 0 6px rgba(99,102,241,0.18);
+  background: #ff4444;
+  display: block;
+  margin: 10px auto 12px;
+}
+
+.name {
+  margin: 4px 0 6px;
+  font-size: 26px;
+  letter-spacing: 0.2px;
+  color: #0f172a;
+}
+
+.contact {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 6px 0 14px;
+  color: #334155;
+  font-size: 14.5px;
+}
+.contact a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(51,65,85,.5); }
+.contact a:hover { border-bottom-style: solid; }
+
+
+.letter {
+  position: relative;
+  z-index: 1;
+  padding: 16px 32px 36px;
+  color: #1f2937;
+  line-height: 1.72;
+  font-size: 16.2px;
+}
+
+.date {
+  text-align: right;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.subject {
+  margin: 14px 0 16px;
+  color: #0b1324;
+}
+
+.closing {
+  margin-top: 18px;
+}
+
+@media print {
+  body { background: #e41616; overflow: visible; }
+  .bg-layer { display: none !important; }
+  .sheet {
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    width: 210mm;
+    min-height: 297mm;
+  }
+  .sheet-background {
+    background: linear-gradient(180deg, #e61717, #c06016);
+  }
+}
