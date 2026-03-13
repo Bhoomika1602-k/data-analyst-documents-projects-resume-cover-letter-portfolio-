@@ -1,0 +1,638 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20252.25.1003.1601                               -->
+<workbook original-version='18.1' source-build='2025.2.4 (20252.25.1003.1601)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='books_dataset (bookmodified1.csv)' inline='true' name='federated.1o8ui0m0ydvbby100s3zr1ymczgh' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='bookmodified1.csv' name='excel-direct.1aq6pv500ijn1x1ftmou40u9t4nx'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='D:/Data analyst journey/Web Scraping/bookmodified1.csv.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.1aq6pv500ijn1x1ftmou40u9t4nx' name='books_dataset' table='[books_dataset$]' type='table'>
+          <columns gridOrigin='A1:C21:no:A1:C21:0' header='yes' outcome='6'>
+            <column datatype='string' name='Title' ordinal='0' />
+            <column datatype='string' name='Availability' ordinal='1' />
+            <column datatype='real' name='Price' ordinal='2' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[books_dataset]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:C21:no:A1:C21:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Title]</local-name>
+            <parent-name>[books_dataset]</parent-name>
+            <remote-alias>Title</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Availability</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Availability]</local-name>
+            <parent-name>[books_dataset]</parent-name>
+            <remote-alias>Availability</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Price]</local-name>
+            <parent-name>[books_dataset]</parent-name>
+            <remote-alias>Price</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='In stock Flag' datatype='integer' name='[Calculation_1716715906422124547]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF LOWER(TRIM([Availability])) = &quot;in stock&quot; THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='Stock Status' datatype='string' name='[Calculation_1716715906422235140]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_1716715906422124547] = 1 THEN &quot;In Stock&quot; ELSE &quot;Out of Stock&quot; END' />
+      </column>
+      <column caption='In Stock %' datatype='real' name='[Calculation_1716715906422661125]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='AVG([Calculation_1716715906422124547])' />
+      </column>
+      <column caption='Overall Avg Price' datatype='real' name='[Calculation_1716715906422853638]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED : AVG([Price]) }' />
+      </column>
+      <column caption='Price VS market Avg' datatype='real' name='[Calculation_1716715906423013383]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Price] - [Calculation_1716715906422853638]' />
+      </column>
+      <column caption='Price Spread' datatype='real' name='[Calculation_1716715906426368008]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='MAX([Price]) - MIN([Price])' />
+      </column>
+      <column caption='books_dataset' datatype='table' name='[__tableau_internal_object_id__].[books!dataset_9DF2829F1883440EB1CB1EA47883932A]' role='measure' type='quantitative' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/avipt/AppData/Local/Temp/TableauTemp/#TableauTemp_1kbtnl1089u6ph1a709gy18o8b9g.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='01/02/2026 06:42:32 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Title</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Title]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Title</remote-alias>
+              <ordinal>0</ordinal>
+              <family>books_dataset</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Availability</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Availability]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Availability</remote-alias>
+              <ordinal>1</ordinal>
+              <family>books_dataset</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Price</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Price]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Price</remote-alias>
+              <ordinal>2</ordinal>
+              <family>books_dataset</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[books!dataset_9DF2829F1883440EB1CB1EA47883932A]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='books_dataset' id='books!dataset_9DF2829F1883440EB1CB1EA47883932A'>
+            <properties context=''>
+              <relation connection='excel-direct.1aq6pv500ijn1x1ftmou40u9t4nx' name='books_dataset' table='[books_dataset$]' type='table'>
+                <columns gridOrigin='A1:C21:no:A1:C21:0' header='yes' outcome='6'>
+                  <column datatype='string' name='Title' ordinal='0' />
+                  <column datatype='string' name='Availability' ordinal='1' />
+                  <column datatype='real' name='Price' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Average Price'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Bodoni MT Black' fontsize='20'>Average Price</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='books_dataset (bookmodified1.csv)' name='federated.1o8ui0m0ydvbby100s3zr1ymczgh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1o8ui0m0ydvbby100s3zr1ymczgh'>
+            <column datatype='real' name='[Price]' role='measure' type='quantitative' />
+            <column-instance column='[Price]' derivation='Avg' name='[avg:Price:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='vertical-align' value='center' />
+            <format attr='text-format' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[avg:Price:qk]' value='c&quot;₹ &quot;#,##0.00;&quot;₹ &quot;-#,##0.00' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-align' value='center' />
+            <format attr='vertical-align' value='center' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Bold' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[avg:Price:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='14.547999382019043' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{042A4387-034F-4335-B5EE-FEDE4B903788}' />
+    </worksheet>
+    <worksheet name='In-Stock Percentage'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Bodoni MT Black' fontsize='20'>In-Stock Percentage</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='books_dataset (bookmodified1.csv)' name='federated.1o8ui0m0ydvbby100s3zr1ymczgh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1o8ui0m0ydvbby100s3zr1ymczgh'>
+            <column datatype='string' name='[Availability]' role='dimension' type='nominal' />
+            <column caption='In stock Flag' datatype='integer' name='[Calculation_1716715906422124547]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF LOWER(TRIM([Availability])) = &quot;in stock&quot; THEN 1 ELSE 0 END' />
+            </column>
+            <column-instance column='[Calculation_1716715906422124547]' derivation='Avg' name='[avg:Calculation_1716715906422124547:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='vertical-align' value='center' />
+            <format attr='text-format' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[avg:Calculation_1716715906422124547:qk]' value='p0%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Bold' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[avg:Calculation_1716715906422124547:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='14.547999382019043' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D0F1D6BC-8045-4E6C-8700-0DE1C4B16A94}' />
+    </worksheet>
+    <worksheet name='Price Spread'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Berlin Sans FB Demi' fontsize='20'>Price Spread</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='books_dataset (bookmodified1.csv)' name='federated.1o8ui0m0ydvbby100s3zr1ymczgh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1o8ui0m0ydvbby100s3zr1ymczgh'>
+            <column caption='Price Spread' datatype='real' name='[Calculation_1716715906426368008]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='MAX([Price]) - MIN([Price])' />
+            </column>
+            <column datatype='real' name='[Price]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_1716715906426368008]' derivation='User' name='[usr:Calculation_1716715906426368008:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='vertical-align' value='center' />
+            <format attr='text-align' value='center' />
+            <format attr='text-format' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[usr:Calculation_1716715906426368008:qk]' value='c&quot;₹ &quot;#,##0.00;&quot;₹ &quot;-#,##0.00' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-family' value='Tableau Bold' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[usr:Calculation_1716715906426368008:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='14.547999382019043' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4DE3EDD1-54D2-45F1-BD83-63BF4BBB0681}' />
+    </worksheet>
+    <worksheet name='Total Books'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Bodoni MT Black' fontsize='20'>Total Books</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='books_dataset (bookmodified1.csv)' name='federated.1o8ui0m0ydvbby100s3zr1ymczgh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1o8ui0m0ydvbby100s3zr1ymczgh'>
+            <column datatype='string' name='[Title]' role='dimension' type='nominal' />
+            <column-instance column='[Title]' derivation='Count' name='[cnt:Title:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='font-family' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[cnt:Title:qk]' value='Tableau Semibold' />
+            <format attr='font-weight' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[cnt:Title:qk]' value='bold' />
+            <format attr='text-align' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[cnt:Title:qk]' value='center' />
+            <format attr='vertical-align' field='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[cnt:Title:qk]' value='center' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[cnt:Title:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='14.547999382019043' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{AE970A22-BFDF-4BAB-9426-25E4C00F09D9}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' name='Total Books'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[none:Title:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{E04BD258-DF0C-4B5B-9470-FFD9374B8016}' />
+    </window>
+    <window class='worksheet' name='Average Price'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{D585147B-C90F-448C-89B5-4BCC12EB0435}' />
+    </window>
+    <window class='worksheet' name='In-Stock Percentage'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{51CA9939-80AA-4CD1-A0A7-D4BAD0EF69F7}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Price Spread'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <selection-collection>
+          <tuple-selection>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.1o8ui0m0ydvbby100s3zr1ymczgh].[usr:Calculation_1716715906426368008:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>43.259999999999998</value>
+              </tuple>
+            </tuple-reference>
+          </tuple-selection>
+        </selection-collection>
+      </viewpoint>
+      <simple-id uuid='{3123E352-30ED-4D98-B58B-DE66632E647C}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Average Price' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAErklEQVR4nO3aO0srWwCG4S+HRLTyUojbIopaKNqkFkQQG5uYxsYfYEobwUZQKxXEUrwQ
+      BAvBC1hoIWInFoLYaiVi5y0S8BpxTiE7IGxvBzYm53ufLjOzFlP4utZkEgqCIBBg6p+fvgHg
+      JxEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEA
+      rBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArBEArIV/+gaA
+      z1xeXmptbe3b4xKJhCorK989n8lkCAD57+rqSnNzc98e19ra+m4AJycn6uvrIwD8P4TDYbW3
+      tysSieSOlZWVvXv97e2trq+vCQD5LxqNKpVKvTmWyWS0t7en9fV1PT096fn5WRUVFRoYGFAo
+      FPrSvEVFRQoFQRD8jZsG/rYgCLS6uqrx8XFJUiQS0eLiohoaGj4dm06nlclkCAD57+LiQktL
+      S3889/j4qJWVFb28vEh63ffX19dLknp6elRVVfXh3ASAvHd8fKze3t5vj1tYWFBLS8uH1/AM
+      gLxXWlqqeDz+x3NPT0/a2trKrQCxWEzRaFSSVF5e/uncrAAoWNlsVsvLy5qampL0+gyQSqXU
+      1NT05TlYAZD30um0tre3c5+DIFA6ndbu7q6Ojo5yx+PxuBobG781NwEg752fn2tiYuLDa9ra
+      2tTf3//lr0B/IwDkvV+/fikWi+nw8PDN8ZKSEjU2NiqRSKizs/PNS7Cv4hkABeHh4UFjY2Pa
+      3NzU7z/ZmpoaTU5Oqra29j/Py69BURCKi4s1NDSkZDKpcPh143J6eqpkMqmDgwN99//4xsaG
+      bm5uWAFQWIIg0M7OjkZGRnR/fy/pdSs0ODiorq6uLz8DdHd3K5PJsAKgsIRCIXV0dGh6elrV
+      1dWSpPv7ew0PD2t2dlbZbPbLcxEAClIoFFJLS4tmZmbU3Nws6XVlmJ+f1+joaG5l+EhdXd3r
+      XGyBUMju7u60v7+fexMsSQ0NDbm3we95eXnR2dkZAcAbWyBYIwBYIwBYIwBYIwBYIwBYIwBY
+      IwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBY
+      IwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBY
+      IwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBY
+      IwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBYIwBY
+      IwBYIwBYIwBYIwBY+xf+VPoB1ITPXQAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='In-Stock Percentage' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAADHklEQVR4nO3ZMUosSxiA0ZrhirgGQxFXYOYqTEVwAa7ELRgZDYiZ4BZMzQRjNVFBREFB
+      6JcJF959mNwnzHdO1vQfVNAfVd09m6ZpGhA1/+kFwE8SAGkCIE0ApAmANAGQJgDSBECaAEgT
+      AGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQ
+      JgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkC
+      IE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDS
+      BECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEgTAGkCIE0ApAmANAGQJgDSBECaAEj79dMLgL9p
+      mqZxf38/FovFuLu7G4eHh2NjY+PrvgBYWg8PD+Pk5GScn5+Pt7e3McYY+/v7v80IgKXz+Pg4
+      FovFODs7+3rw/0QALJXX19ext7c3np6evjXvJZil8vn5OV5eXsYYY8zn87G9vT1WV1f/OG8H
+      YOmsrKyMnZ2dcXBwMNbX18fu7u74+Pj411kBsFTW1tbG8fHx2NzcHPP5fDw/P//nvABYKqur
+      q2Nra+vb894BSBMAaQIgTQCkCYA0AZDmMyhL5fLyclxfX39dv7+///YT7OLiYlxdXY0xxpjN
+      ZmM2TdP0v68S/pKjo6Nxenr6rdnZbOYIRJsdgKVyc3Mzbm9vvzXrCESeIxBpAiBNAKQJgDQB
+      kCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBp
+      AiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA
+      0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBN
+      AKQJgDQBkCYA0gRAmgBIEwBpAiBNAKQJgDQBkCYA0gRAmgBIEwBpAiBNAKT9A63VYvIkc3lq
+      AAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Price Spread' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAAFIElEQVR4nO3ab2jUdQDH8c/uRm2ruZtr/3A6HVkD3YOoKAykzGCLmj7Y1pO1gQ8aPRg9
+      K7Qne1Dak6AeZGUPIjFQg8CkP4SaFGmRtQdlsYEoguhac//ubhu7u28PqsuBbrcwd+Pzfj26
+      +/6+vy/fB983d9z9CkIIQYCpyFJvAFhKhf+8GE4GJWaXcivArZcNIDErjc0s5VaAW4+vQLBG
+      ALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBG
+      ALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBG
+      ALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBG
+      ALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBG
+      ALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBGALBWuNQbABYyMnRZH+/fu+j7
+      tnX2qKq2bt45BIC8l4hP6Puvvlj0fVtbn5EIAA6i0UJtae1Qcckd2bFYRdWC9xWEEIIkXRgP
+      Gpv5/zYI/FfpdErJePyakaBkfFI/nzmlTz7cp2R8UpJ0/yNb1LNztyKRaM5r8wmAvBeNFqq0
+      LDZnrLSsXNWr1mhlZbX2vvKiJKn/9EldGPxNDY0bc16bAJD3hq9c0uH33rjutXQqpUgkokwm
+      o0wmowNvvaaKqlpJUtuOXlWvWjPv2gSAvDeViKv/9Mmc5l48N6CL5wYkSU92dC84nwCQ92IV
+      lWrb0Xvda9NTSX126H1lMhlJ0oObn1D93Y2SpPLKmnnXTadTBID8tyK2Us1tXXPGQghKxid0
+      5MC+7OEvKi7Rts4e1dTV57Tuj9+eIADkv9E/hvT5R/uz70MImhwf1eAv/ZoYHcmON7d353z4
+      k4m4Dr7zOgEg/02Oj+nE0cM3vF4QiejxpzvU0t51wznXCiHo+JGDmhi7SgDIfzV19dq09Smd
+      OvappJAdj1VUqumBTdrcvF1r79mggoKCnNZLTE7o+NFDkngYDsvAbbcXqfuFl7W9q2fOn1wh
+      k9HDj7Vo3b0bcz78kjSdTGg6kZAkRfv6+vokaWxGmk7f3I0DN0skEtH6DfepdvVa/frTd0rN
+      zmpmekpnvjmmWEWlVq9bn3MEIWQUQlBDYxOPQmD5OT9wVm/vfklXh4ck/RVHS3u3WjufUzS6
+      uG/1BIBlJ4Sgkd8v6909u3R+8Gx2/KFHm/Vs704VFZfkvBYBYNmankrqgzdf1Q9ff5kda2hs
+      0vO79qj8ruqc1iAALGvpVErDVy7p72MsSSoti+nOFbF57voXAcAaP4PCGgHAGgHAGgHAGgHA
+      GgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA
+      GgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA
+      GgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA
+      GgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHAGgHA
+      GgHAGgHAGgHAGgHAGgHAGgHA2p+GryBO5yz/fwAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Total Books' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
